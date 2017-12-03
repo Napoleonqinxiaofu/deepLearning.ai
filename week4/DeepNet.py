@@ -117,8 +117,8 @@ if __name__ == "__main__":
     test = np.random.randn(20, 1)
 
     # input layer is 20 neurons, hidden layer is 10 neurons, output is 1 neurons
-    log = DeepNet(train, labels, (20, 100, 10, 50, 100, 1))
+    net = DeepNet(train, labels, (20, 100, 10, 50, 100, 1))
 
-    log.train()
+    net.train(epoch=100)
 
-    log.predict(test)
+    net.predict(test)
