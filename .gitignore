@@ -4,4 +4,6 @@ __pycache__/
 .idea/
 /mnist-data
 /multiprocessLearning
+multiprocessLearning/
 /AnimatePlot
+AnimatePlot/

@@ -76,5 +76,5 @@ if __name__ == "__main__":
         return x_data, y_data
 
 
-    p = Plot(update_func=update, frames=generate_data)
+    p = Plot(update_func=update, frames=100)
     p.draw()
