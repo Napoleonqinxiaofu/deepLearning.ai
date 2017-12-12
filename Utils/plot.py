@@ -9,31 +9,28 @@ from matplotlib.animation import FuncAnimation
 
 
 class Plot(object):
-
     def __init__(self, update_func, frames):
-        self.x_data, self.y_data = [], []
+        self.x_data, self.y_data = [1, 2, 3, 4], [1, 2, 3, 4]
         self.update_func = update_func
         self.frames = frames
         self.t = 0
+        self.ax = None
+        self.line = None
+        self.ani_ref = None
 
     def draw(self):
-        # fig, self.ax = plt.subplots()
-        # self.line, = plt.plot([], [], 'ro')
-        # fig, self.ax = plt.subplots()
-        # self.line, = self.ax.plot([], [], lw=1)
-        # self.ax.grid()
-
         fig = plt.figure()
-        self.ax = plt.axes()
-        self.line, = self.ax.plot([], [], lw=2)
+        self.ax = plt.axes(xlim=(0, 1000), ylim=(0, 1000))
+        self.line, = self.ax.plot(self.x_data, self.y_data, lw=2)
 
         self.ani_ref = FuncAnimation(fig, self._update, frames=self.frames, blit=True,
-                                     interval=1, init_func=self._animation_init)
+                                     interval=20, init_func=self._animation_init)
         plt.show()
 
     def _animation_init(self):
         self.line.set_data(self.x_data, self.y_data)
-        return self.line
+        # init and update function has to return the sequence of artists
+        return self.line,
 
     def _update(self, i):
 
@@ -58,7 +55,7 @@ class Plot(object):
 
         self.line.set_data(self.x_data, self.y_data)
 
-        return self.line
+        return self.line,
 
 
 if __name__ == "__main__":
@@ -70,7 +67,7 @@ if __name__ == "__main__":
 
 
     def update(x_data, y_data):
-        x, y = x_data[-1], np.sin(2 * np.pi * (x_data[-1] + 0.1))
+        x, y = x_data[-1] + 1, y_data[-1] + 1
         x_data.append(x)
         y_data.append(y)
         return x_data, y_data
