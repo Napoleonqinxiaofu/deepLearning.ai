@@ -35,7 +35,7 @@ class Layer(object):
             self.activation = tanh
             self.activation_prime = tanh_prime
 
-    def back_propagation(self):
+    def back_propagation(self, ):
         pass
 
     def train(self, inputs):
@@ -45,7 +45,7 @@ class Layer(object):
         return self.train(inputs)
 
     def get_params(self):
-        return (self.weights, self.biases)
+        return self.weights, self.biases
 
     def set_params(self, params):
         (weights, biases) = params

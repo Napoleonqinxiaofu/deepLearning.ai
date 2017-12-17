@@ -69,7 +69,7 @@ class DeepNet(object):
             dw.append(dw_l)
             db.append(db_l)
 
-        return (dw[::-1], db[::-1])
+        return dw[::-1], db[::-1]
 
     def predict(self, test):
         """
