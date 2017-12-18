@@ -31,7 +31,7 @@ class Mnist(object):
         imgs = struct.unpack_from(bits_string, buffers, offset)
 
         # imgs = np.reshape(imgs, [imgNum, 1, width * height])
-        imgs = np.reshape(imgs, [img_num, width, height])
+        imgs = np.reshape(imgs, [img_num, width * height]).astype(np.float32)
 
         return imgs
 
